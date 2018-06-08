@@ -17,7 +17,7 @@ department = Escuela de Estadística,
 program = Programa Académico de Estadística,
 subject = Simulación Estadística,
 city = Cali,
-month = 5,
+month = 6,
 year = 2018]
 
 % -------------------------------------------------------------------------------------
@@ -48,9 +48,9 @@ year = 2018]
 % "secondtitle = " título del artículo traducido al idioma alterno
 % "shorttitle = " título corto (opcional) para el encabezado
 % **** --------------------------------------------------------------------------------
-\title[maintitle ={TEOREMA CENTRAL DEL LIMITE \\ PRUEBAS DE NORMALIDAD.},
+\title[maintitle ={TRABAJO 3 \\ RESEÑA},
        %secondtitle = Template for report in a course,
-       shorttitle = TEOREMA CENTRAL DEL LIMITE Y PRUEBAS DE NORMALIDAD]
+       shorttitle = RESEÑA]
 % //// --------------------------------------------------------------------------------
 % -------------------------------------------------------------------------------------
 % Espacio reservado para ingresar el(los) autor(es) del artículo de forma individual.
@@ -128,244 +128,19 @@ de grado.tex}) and can be used as a guideline just replacing its contents. It is
 % -------------------------------------------------------------------------------------
 % Título de la primera sección
 % **** --------------------------------------------------------------------------------
-\section{TEOREMA CENTRAL DEL LIMITE.}
 
-~\\El teorema del límite central es un teorema fundamental de probabilidad y estadística. El teorema describe la distribución de la media de una muestra aleatoria proveniente de una población con varianza finita. Cuando el tamaño de la muestra es lo suficientemente grande, la distribución de las medias sigue aproximadamente una distribución normal. El teorema se aplica independientemente de la forma de la distribución de la población. El teorema de límite central le permite aplicar estos procedimientos útiles a poblaciones que son considerablemente no normales. El tamaño que debe tener la muestra depende de la forma de la distribución original. Si la distribución de la población es simétrica, un tamaño de muestra de 5 podría producir una aproximación adecuada. Si la distribución de la población es considerablemente asimétrica, es necesario un tamaño de muestra más grande.
+\section{Un contraste de hipótesis para datos funcionales}
 
-\subsection{Teorema del límite central.}
-~\\Si $\bar{X}$ es la media de una muestra aleatoria de tamaño n obtenida desde una población con cualquier distribución con media $\mu_{X}$ y varianza $\sigma_{X^2}$, entonces cuando n es grande, $\bar{X}$ sigue una distribución normal con $\mu_{\bar{X}}$ $= \mu_X$ y $\sigma^2_{\bar{X}}$ $= \frac{\sigma^2}{n}$
+\section{Análisis de correspondencias múltiples en presencia de datos faltantes: el principio de datos disponibles del algoritmo NIPALS (ACMpdd)}
+~\\El objetivo principal de esta tesis de maestría es proponer un método de análisis de correspondencias múltiples para matrices con datos faltantes. Para ello, se propone un método denominado ACMpdd, el cuál trabaja bajo el principio de datos disponibles del algoritmo NIPALS.
 
-~\\Si $\bar{X}$ es la media de una muestra aleatoria de tamaño n que se toma de una población  $N(\mu_X, \sigma^2_X)$ conocida, entonces:
+~\\Primero, debemos saber que es el análisis de correspondencias múltiples y que es el algoritmo NIPALS, para tener una idea general sobre que tipo de problemas se pueden abordar bajo este método propuesto.
+~\\El análisis de correspondencias múltiples ACM, es un método estadístico multivariado (estudia tres o más variables al mismo tiempo) que sirve para analizar variables cualitativas (variables que expresan distintas características, cualidades o modalidades), el problema fundamental que posee este método es que para realizarlo se necesitan las bases de datos totalmente completas, es decir, no admite datos faltantes, lo cuál ocurre con demasiada frecuencia en la práctica, sobre todo en las encuestas; esto hace que este método solo se pueda usar en las condiciones ideales (datos completos). Aunque se han propuesto soluciones a este problema como eliminar los registros donde se produzca el dato faltante o la imputación del dato faltante (básicamente consiste en estimar los datos faltantes a partir de los datos disponibles), estos tienen muchas criticas y muchos problemas, el primero (eliminar registros), ha sido criticado porque significaría eliminar toda una fila o una columna de datos, lo cuál no solo generaría perdida de información sino también perdida de recursos; y el segundo (imputación del dato faltante), al hacer las estimaciones de los datos faltantes a partir de los datos disponibles, 'hala hacia el montón', es decir, no son buenas estimaciones, ya que estas se ven muy afectadas por las categorías con mayor frecuencia (más repeticiones).
 
-$$Z= \frac{ \bar{X} - \mu_X } {\frac{\sigma_x} {\sqrt{n}}}$$
+~\\La otra solución es la que se trabaja en esta tesis que es utilizar un algoritmo que permita trabajar con la presencia de éste tipo de datos (principio de datos disponibles), ese algoritmo es el algoritmo NIPALS, el cuál realiza  una descomposición singular de la matriz de datos, mediante secuencias iterativas de proyecciones ortogonales. Esta solución bajo nuestra perspectiva es la mejor, ya que se trata de 'exprimir' al máximo los datos, dando uso a cada uno de ellos. Al aplicar este algoritmo a matrices de datos completas, el resultado es equivalente al ACM, pero, su mayor virtud es que se puede utilizar con datos faltantes y obtener sus estimaciones a partir de una reconstrucción de la matriz de datos. Además de esto, el algoritmo NIPALS es de vital importancia en la regresión PLS (minimos cuadrados parciales), ya que este sirve para descomponer la matriz y así obtener las componentes ortogonales sobre las cuales se realizara la regresión. Entonces, indirectamente el algoritmo NIPALS es de vital importancia en el proceso de estimar modelos de regresión con presencia de multicolinealidad, matrices sobredefinidas (con más variables que datos), y matrices con datos faltantes.
 
-~\\Entonces Z se aproxima a  una variable normal N(0,1), mejorándose la calidad de la aproximación a medida que el n aumenta.
+~\\El
 
-\begin{itemize}
-	\item El teorema del límite central garantiza una distribución aproximadamente normal cuando n es suficientemente grande.
-	\item Existen diferentes versiones del teorema, en función de las condiciones utilizadas para asegurar la convergencia. Una de las más simples establece que es suficiente que las variables que se suman sean independientes, idénticamente distribuidas, con valor esperado y varianza finitas.
-	\item La aproximación entre las dos distribuciones es, en general, mayor en el centro de las mismas que en sus extremos o colas, motivo por el cual se prefiere el nombre "teorema del límite central".	
-\end{itemize}
-
-\pagebreak
-\section{VARIABLES ALEATORIAS.}
-\subsection{Introducción.}
-~\\En esta sección se evidencian los resultados de las simulaciones de las distribuciones de probabilidad para tamaños de muestra y distintos parámetros, así poder observar su comportamiento y dar respuesta a los siguientes interrogantes: 
-
-\begin{itemize}
-	\item Para que valor de n se puede afirmar el cumplimiento del teorema.  
-	\item La distribución de probabilidad de X afecta la convergencia.
-	\item Los parámetros de la distribución de probabilidad de X afecta la convergencia. 
-\end{itemize}
-
-~\\El teorema referenciado en el numeral 1 del presente documento se llevara a cabo haciendo uso de dos distribuciones, donde: la distribución Poisson y la distribución Logística fueron simuladas por medio de las funciones ya incluidas en el programa estadístico r. Teniendo en cuenta estas simulaciones se aplico la prueba Cramér-Von Mises y se comparó los resultados para así saber si las simulaciones para los distintos tamaños de muestra y parámetros de verdad cumplen con el Teorema Central Del Limite y saber si estas convergen o no a la distribución normal. Posteriormente, se concluye acerca de los métodos de simulación usados teniendo en cuenta los resultados de la prueba.
-
-\subsection{Descripción general de las distribuciones y las pruebas de bondad de ajuste.}
-\subsubsection{Distribución Poisson.}
-~\\  Esta distribución es una de las más importantes distribuciones de variable discreta. Sus principales aplicaciones hacen referencia a la modelización de situaciones en las que interesa determinar el número de hechos de cierto tipo que se pueden producir en un intervalo de tiempo o de espacio, bajo presupuestos de aleatoriedad. Su función de densidad está dada por: 
-~\\$$f(x,\lambda)=\frac{e^{-\lambda}\cdot \lambda^x}{x!}  ; x \in \{0,1,2,3,...\}$$
-
-\subsubsection{Distribución Logística.}
-~\\La función de distribución de la logística se utiliza como modelo de crecimiento. Por ejemplo, con un nuevo producto a menudo encontramos que el crecimiento es inicialmente lento, entonces gana impulso, y finalmente se ralentiza cuando el mercado está saturado o se alcanza alguna forma de equilibrio. Esta distribución tiene uso en los modelos logit, ya que estos modelos trabajan con su función de distribución acumulada denominada función logistica, por la simpleza de esta para encontrar probabilidades. Su función de distribución acumulada está dada por:
-$$F(x,a,b)=\frac{1}{1+e^-(\frac{x-a}{b})}$$
-
-\subsubsection{Prueba Cramer-Von Mises.}
-~\\La distribución normal es utilizada en muchos campos ya que es el supuesto básico de algunas herramientas estadísticas tales como las pruebas t-student, Chi-Cuadrado, ANOVA, entre otros. Esto hace que muchos fenómenos puedan ser modelados mediante ella, lo cual promueve el desarrollo de distintas pruebas estadísticas que se encuentran en la literatura de las cuales se destacan las de Pearson (Pearson 1900), \textbf {Cramer-Von Mises (Cramer 1928 y Mises 1947)}, Kolmogorov- Smirnov (Lilliefors 1967), Anderson-Darling, (Anderson y Darling 1954) Shapiro-Wilk, (Shapiro y Wilk 1965) Shapiro-Francia, (Shapiro y Francia 1972) Jarque-Bera (Jarque y Bera 1987) y D'Agostino (D'Agostino 1972), de las cuales veremos la aplicación de una de ellas en el presente informe que tiene como fin verificar el Teorema Central del Limite y establecer bajo que condiciones especificas se presenta convergencia con la distribución Normal ($\mu$,$\sigma^2$) a partir de la simulación de variables aleatorias. 
-
-\pagebreak
-~\\ \textbf{Para los cuales esta prueba plantea las hipotesis:}
-$$H_{0}:f(x,\theta)=f_{0}(x,\theta)$$
-$$H_{1}:f(x,\theta)\neq f_{0}(x,\theta) $$ 
-
-~\\ \textbf{Para la cual se tiene como estadístico de prueba a:}
-$$ W = \frac{1}{12n} + \displaystyle\sum_{i=1}^N [P_i - \frac{2_i - 1 }{2n}] $$
-
-\section{SIMULACIÓN DE VARIABLES ALEATORIAS Y PRUEBAS DE NORMALIDAD}
-\subsection{Simulación de las observaciones:}
-\subsubsection{Distribución Poisson:}
-~\\Es importante recordar que los parámetros sobre los cuales se van a generar las observaciones son ($\lambda=1$), ($\lambda=5$), ($\lambda=10$), con 20000 simulaciones que representan la población para las cuales se sacaron muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$) datos. La generación de estos números se hizo por medio del comando rpois del software estadístico R.
-
-\subsubsection{Distribución Logística:}
-~\\El uso de esta distribución en la problemática del articulo es una función derivada de ella, es decir, no se usa directamente la función de densidad logística para describir el fenómeno, se usa su función de distribución acumulada, denominada también función logística. Teniendo en cuenta lo anterior, se generaron datos con distribución Logística de parámetros ($a=0,b=1$), ($a=9,b=4$), ($a=15,b=6$), con 20000 simulaciones que representan la población para las cuales se sacaron muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$) datos.
-
-\subsection{Prueba Cramer-Von Mises.}
-~\\Uno de los criterios mas utilizados para comparar funciones es el introducido por los investigadores Harald Cramér y Richard Edler Von Mises y conocido como criterio de Cramér - Von Mises (CM ) siendo aplicado a problemas de bondad de ajuste de una distribución como el que nos compete trabajar en este informe a través de la función \textbf {cvm.test} que nos permite obtener los valores-p calculando así la proporción de rechazo de la prueba. 
-
-~\\Una de las grandes ventajas del test de Cramér-Von Mises para n muestras independientes radica en que su distribución no depende de la distribución de procedencia de las muestras. Por este motivo, para ilustrar la calidad de las aproximaciones propuestas, no es necesario considerar distintos modelos, por lo cual para nuestro escenario de simulación hemos propuesto tamaños de muestras ($n=1$), ($n=10$), ($n=25$), ($n=30$), ($n=50$) a partir de 20000 simulaciones que serán las que permitan hacer las aproximaciones y saber así bajo que condiciones se alcanza la convergencia de nuestras distribuciones (Poisson, Logística) a una distribución Normal ($\mu$,$\frac{\sigma^2}{n}$).
-
-\pagebreak
-\section{Resultados}
-\subsubsection{Distribucción Poisson:}
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[scale=0.37]{FigurasUV/pois1.png}
-  \caption{Simulaciones en R de la distribución Poisson($\lambda=1$) con muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$))}\label{figura1}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[scale=0.37]{FigurasUV/pois5.png}
-	\caption{Simulaciones en R de la distribución Poisson($\lambda=5$) con muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$)}\label{figura1}
-\end{figure}
-
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[scale=0.37]{FigurasUV/pois10.png}
-	\caption{Simulaciones en R de la distribución Poisson($\lambda=10$) con muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$)}\label{figura1}
-\end{figure}
-
-\subsubsection{Prueba Cramer-Von Mises Distribución Poisson.}
-\begin{center}
-	\begin{tabular}{ccccccccc}
-		\hline
-		\rule[-1ex]{0pt}{2.5ex}    & n=1 &  & n=10 &  & n=25 &  &  n=50 &  \\ 
-		
-		\rule[-1ex]{0pt}{2.5ex}  Parametro & W & P-Valor & W & P-Valor & W & P-Valor & W & P-Valor \\ 
-		\hline  
-		\rule[-1ex]{0pt}{2.5ex}  $\lambda=1 $ & 10.619 & 1.123e-10 & 0.95609 & 0.003111 & 0.423 & 0.06284 & 0.42211 & 0.06318 \\ 
-		
-		\rule[-1ex]{0pt}{2.5ex}  $\lambda=5 $ & 2.3964 & 1.622e-06 & 0.178 & 0.3145 & 0.08937 & 0.6396 & 0.08607 & 0.6576 \\ 
-		
-		\rule[-1ex]{0pt}{2.5ex}  $\lambda=10 $ & 1.0749 & 0.001638 & 0.12153 & 0.4893 & 0.06887 & 0.7586 & 0.062997 & 0.7952 \\ 
-		\hline 
-	\end{tabular} 
-\end{center}
-
-~\\En las graficas presentadas en la \textbf{sección 4.0.1} se puede observar como los valores obtenidos para la distribución de poisson de parámetros ($\lambda=1$), ($\lambda=5$), ($\lambda=10$) con tamaños de muestra ($n=1$), ($n=10$), ($n=25$), ($n=50$) por el generador de R, se aprecia que a medida que se aumenta el tamaño n de la muestra, el comportamiento de la distribución se traslada hasta llegar a asemejarse a la distribución normal por lo cuál se puede concluir que se cumple así con el teorema del limite central el cual afirma que cuando el tamaño de la muestra es lo suficientemente grande, la distribución de las medias sigue aproximadamente una distribución normal. La afirmación anterior se puede validar mediante la prueba de bondad de ajuste, para el caso particular que nos compete se uso la prueba de normalidad Cramer-Von mises que nos permite determinar la pertenencia de los datos simulados a la distribución normal,  los valores-p correspondientes a la prueba se encuentran en la tabla \textbf{sección 4.0.2} en los cuales se observa como el valor-p aumenta a medida que aumenta el tamaño de la muestra, indicando que mientras mayor sea el tamaño de muestra, mejor va a ser la convergencia de la distribución de las medias a la distribución normal.
-
-\newpage\subsubsection{Distribucion Logistica:}
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[scale=0.37]{FigurasUV/logis01.png}
-	\caption{Simulaciones en R de la distribución Logística($a=0,b=1$) con muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$)}\label{figura1}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[scale=0.37]{FigurasUV/logis94.png}
-	\caption{Simulaciones en R de la distribución Logística($a=9,b=4$) con muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$)}\label{figura1}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[scale=0.37]{FigurasUV/logis156.png}
-	\caption{Simulaciones en R de la distribución Logística($a=15,b=6$) con muestras de tamaño ($n=1$), ($n=10$), ($n=25$), ($n=50$)}\label{figura1}
-\end{figure}
-
-\pagebreak\subsubsection{Prueba Cramer-Von Mises Distribución Logística.}
-\begin{center}
-	\begin{tabular}{ccccccccc}
-		\hline
-		\rule[-1ex]{0pt}{2.5ex}    & n=1 &  & n=10 &  & n=25 &  &  n=50 &  \\ 
-		
-		\rule[-1ex]{0pt}{2.5ex}  Parametro & W & P-Valor & W & P-Valor & W & P-Valor & W & P-Valor \\ 
-		\hline  
-		\rule[-1ex]{0pt}{2.5ex}  ($a=0,b=1$) & 0.18989 & 0.288 & 0.0804 & 0.6894 & 0.02928 & 0.9785 & 0.0477 & 0.8903\\ 
-		
-		\rule[-1ex]{0pt}{2.5ex}  ($a=9,b=4$) &  0.2185 & 0.2343 & 0.02528 & 0.989 & 0.07099 & 0.7456 & 0.026256 & 0.9868 \\ 
-		
-		\rule[-1ex]{0pt}{2.5ex}  ($a=15,b=6$) & 0.55174 & 0.02948 & 0.03095 & 0.973 & 0.019361 & 0.9976 & 0.044503 & 0.9088 \\ 
-		\hline 
-	\end{tabular} 
-\end{center}
-
-~\\En las graficas presentadas en la \textbf{sección 4.0.3} se puede observar como los valores obtenidos para la distribución Logística de parámetros ($a=0,b=1$), ($a=9,b=4$), ($a=15,b=6$), con tamaños de muestra ($n=1$), ($n=10$), ($n=25$), ($n=50$) por el generador de R, se aprecia que la distribución tiene ya un comportamiento semejante al de la distribución normal, siendo esta simetrica al rededor del parametro \textbf{a}. Mas sin embargo se aprecia como al  aumentar el tamaño n de la muestra, el comportamiento de la distribución logística se hace mas a la distribución normal por lo cuál se puede concluir que se cumple así con el teorema del limite central el cual afirma que cuando el tamaño de la muestra es lo suficientemente grande, la distribución de las medias sigue aproximadamente una distribución normal. La afirmación anterior se puede validar mediante la prueba de bondad de ajuste, para el caso particular se uso la prueba de normalidad Cramer-Von mises que nos permite determinar la pertenencia de los datos simulados a la distribución normal,  los valores-p correspondientes a la prueba se encuentran en la tabla \textbf{sección 4.0.4} en los cuales se observa como el valor-p aumenta a medida que aumenta el tamaño de la muestra, indicando que mientras mayor sea el tamaño de muestra, mejor va a ser la convergencia de la distribución de las medias a la distribución normal.
-
-\begin{itemize}
-\item Es posible afirmar que para n de tamaño mayores a 30 ($n>30$) se cumple el Teorema.
-\item La distribución de probabilidad de X afecta la convergencia.
-\item Los parámetros de la distribución de probabilidad de X afecta la convergencia.
-\end{itemize}
-
-\pagebreak
-\section{Referencias}
-~\begin{itemize}
-\item\textbf {$https://www.vitutor.com/estadistica/inferencia/intervalos.html$}
-\item\textbf {$http://www.ub.edu/stat/GrupsInnovacio/Statmedia/demo/Temas/Capitulo5/B0C5m1t4.htm$}
-\item\textbf {$http://e-stadistica.bio.ucm.es/glosario2/teor_limite_central.html$}
-\item\textbf {$https://www.researchgate.net/publication/262701897_Sobre_el_Estadistico_de_Cramer-Von_Mises$}
-\item\textbf {$http://www.scielo.sa.cr/pdf/rmta/v19n1/a07v19n1.pdf$}
-\end{itemize}
-
-\pagebreak\section{Scripts}
-\begin{verbatim}
-#-----------------------------------#
-# Kevin Steven Garcia Chica
-# Cesar A. Saavedra 
-# Simulacion Estadistica Trabajo 2
-#-----------------------------------#
-install.packages("goftest")
-library("goftest")
-#funci?n:
-Fun<-function(x,n,k){
-N=length(x)
-medias=rep(0,k)
-for (i in 1:k) {
-O=order(runif(N))
-medias[i]=mean(x[O[1:n]])
-}
-m=round(mean(medias),4)
-s2=round((var(medias)*(k-1)/k*10000)/10000,4)
-hist(medias,freq=FALSE,ylab="Densidad",xlab = paste("Promedios con n =",n,"datos"),
-main = paste("Media =",m,"\n Varianza =",s2))
-
-curve(exp(-((x-mean(medias))/sd(medias))^2/2)/(sd(medias)*sqrt(2*pi))
-,min(medias),max(medias),add=T)
-cvm.test(medias,"pnorm")
-}
-
-#Distribuci?n Logistica: 
-x<-rlogis(20000,0,1)  #Par?metros 0,1
-x11()
-par(mfrow=c(2,2))
-Fun(x,1,5000)
-Fun(x,10,5000)
-Fun(x,25,5000)
-Fun(x,50,5000)
-
-
-x1<-rlogis(20000,9,4)  #Par?metros 9,4 
-x11()
-par(mfrow=c(2,2))
-Fun(x1,1,5000)
-Fun(x1,10,5000)
-Fun(x1,25,5000)
-Fun(x1,50,5000)
-
-x2<-rlogis(20000,15,6)  #Par?metros 15,6 
-x11()
-par(mfrow=c(2,2))
-Fun(x2,1,5000)
-Fun(x2,10,5000)
-Fun(x2,25,5000)
-Fun(x2,50,5000)
-
-#Distribuci?n Poisson:
-x3<-rpois(20000,1)  #Par?metro lambda=1
-x11()
-par(mfrow=c(2,2))
-Fun(x3,1,5000)
-Fun(x3,5,5000)
-Fun(x3,10,5000)
-Fun(x3,30,5000)
-
-x4<-rpois(20000,5)  #Par?metros lambda=5 
-x11()
-par(mfrow=c(2,2))
-Fun(x4,1,5000)
-Fun(x4,5,5000)
-Fun(x4,10,5000)
-Fun(x4,30,5000)
-
-x5<-rpois(20000,10)  #Par?metros lambda=10
-x11()
-par(mfrow=c(2,2))
-Fun(x5,1,5000)
-Fun(x5,5,5000)
-Fun(x5,10,5000)
-Fun(x5,30,5000)
-\end{verbatim}
 
 % //// --------------------------------------------------------------------------------
 % -------------------------------------------------------------------------------------
