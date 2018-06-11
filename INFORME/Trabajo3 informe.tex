@@ -9,7 +9,6 @@
 % **** --------------------------------------------------------------------------------
 \documentclass[13pt,report,oneside]{revcoles}
 \usepackage{anysize}
-\marginsize{1cm}{1cm}{1cm}{1cm}
 \labeldocument[
 university = Universidad del Valle,
 faculty = Facultad de Ingeniería,
@@ -155,6 +154,42 @@ de grado.tex}) and can be used as a guideline just replacing its contents. It is
 
 
 \section{Un contraste de hipótesis para datos funcionales}
+~\\Las variables funcionales se caracterizan por la evolución de una variable a lo largo del tiempo (proceso estocástico), de modo que los valores que toman son funciones en lugar de vectores como en análisis multivariante clásico. La imposibilidad de medir la mayoría de estas variables continuamente en el tiempo, unida a la complejidad teórica de muchos de los métodos estadísticos disponibles para su análisis, conllevan a que se maneje resúmenes periódicos, los cuales permiten constituir un modelo de series temporales contenidas que describen fenómenos. 
+
+~\\Estos problemas han planteado la necesidad de desarrollar metodologías potentes que permitan, en la práctica, la modelación y predicción a partir de datos funcionales, dando lugar a una especialidad estadística muy reciente conocida con el nombre de Análisis de Datos Funcionales (FDA), que en la actualidad está siendo objeto de un estudio intensivo por parte de los investigadores. A partir de lo anterior se llega al objetivo principal de la tesis de maestría en la que se basa la presente reseña, el cual es modelar el comportamiento de datos de dos estaciones de vigilancia de la calidad del aire para contaminación por partículas con un diámetro menor a 2.5 µm, mediante el uso de datos funcionales y la simulación de estos para realizar un análisis estadístico que permita responder a la pregunta de si son estadísticamente iguales las curvas generadas.
+
+~\\La solución que se plantea en el trabajo de tesis es el de tomar todos los datos obtenidos por medio de las estaciones, partir de datos escalares y generar curvas por medio de análisis numérico, dichas curvas son llamadas datos funcionales. Una particularidad del estudio es que se evalúan las curvas mas no la estadística escalar, lo que permite a su vez obtener mediciones discretas de un fenómeno continuo a partir de técnicas de suavización y de esta manera extender conceptos de la estadística escalar a la funcional. Los datos funcionales sirven para comparar medias de medias funcionales de poblaciones de datos, para el estudio en particular corresponde a dos poblaciones de datos pareadas, generando así mediciones discretas de un fenómeno continuo a partir de técnicas de suavización. La razón por la cual para la modelación se simuló partiendo de escalares para llegar a datos funcionales fue porque no se conocía la distribución de las curvas que generaban los escalares, lo cual dificultaba el análisis estadístico. 
+
+~\\Para facilitar el estudio, el autor hizo uso del análisis por medio de curvas de varianzas, puesto que es un método útil para constatar la utilidad de los datos obtenidos, en el caso específico se evaluó la aplicabilidad de los datos obtenidos a partir de dos estaciones meteorológicas de medición de calidad del aire en la ciudad de Cali, Valle del Cauca; a partir de las mediciones dadas, reportadas como medias, se calcula una curva y se tienen los datos funcionales de medición donde cada conjunto de curva tiene una media funcional, mediante la cual se busca responder si las curvas son estadísticamente iguales. 
+
+~\\Es a partir de esto nace el problema estadístico en el cual se busca comparar las medias funcionales, donde el objetivo es construir un contraste de hipótesis para dichas pruebas a partir de dos enfoques:
+\begin{itemize}
+\item[1-]	Se realiza la integral de la diferencia de las parejas de curvas, se promedian y se incluye el coeficiente longitudinal.
+\item[2-]	Se toma de manera parecida el enfoque 1 pero primero se promedia y luego se integra, contrario al enfoque 1.
+\end{itemize}
+
+~\\Es importante aclarar que el coeficiente longitudinal se encarga de mostrar discrepancias entre las curvas, el cual es el estadístico que interesa en el estudio.
+
+~\\En el enfoque 1 se tienen medias y la integral de las medias, al mirar la distribución de las medias se puede aplicar el Teorema del límite central, por lo cual todos tienen distribución normal y esto facilita el hacer contrastes. Ya que el objetivo del investigador es realizar contrastes de hipótesis; para realizar dicha hipótesis se realizan simulaciones de poblaciones bajo una hipótesis nula, hipótesis que plantea que las medias son iguales, es decir dos poblaciones que tienen medias iguales.
+
+~\\Es importante la simulación puesto que por medio de esta se quiere saber si la prueba es suficientemente buena para detectar diferencias entre las curvas que están simuladas por parejas pero que entregan dos poblaciones diferentes; poblaciones que a medida que se aumenta el tamaño de muestra, converge puesto que son medias, por lo cual es un método de simulación convergente. Mediante esta simulación y el tamaño de muestra escogido se obtuvo que para el enfoque 1 todo es normal pese a algunas diferencias; sin embargo, en el enfoque 2 la diferencia entre las curvas es mucho mayor. También resaltar que la simulación nos permite conocer la potencia de la prueba para así saber cuándo rechazar la hipótesis planteada al inicio.
+
+~\\En general, el método propuesto se puede aplicar a cualquier conjunto de datos que tenga como estructura datos pareados para comparación de medias o problemas propios, un ejemplo  claro es la variación meteorológica, donde se puede evidenciar cómo la calidad de aire se ve afectada por esta, de forma tal que si se contrastan se puedan obtener datos más viables que permitan al investigador obtener resultados más concluyentes para el estudio que se lleve a cabo y entregar estos a otros especialistas del tema para que tomen acciones y decisiones en base a estos.
+
+
+
+\section{Referencias}
+\begin{itemize}
+\item[1.]Análisis de Correspondencias Múltiples en presencia de datos faltantes:el principio de datos disponibles del algoritmo NIPALS (ACMpdd). Andrés Felipe Ochoa. Sustentación tesis de maestría. Universidad del Valle. Junio 2018. 
+\item[2.]Un Contraste de Hipótesis para datos funcionales. Cristhian Leonardo Urbano Leon. Exposición tesis de maestría.Universidad del Valle. Junio 2018.
+\item[3.]METODOS PLS EN ANALISIS MULTIBLOQUES:TRATAMIENTO DE DATOS FALTANTES Y MULTICOLINEALIDAD. PhD. VICTOR MANUEL GONZALEZ ROJAS. Universidad del Valle. Abril 2016.
+\item[4.]Principal Component Analysis (PCA) \& NIPALS algorithm. Henning Risvik. May 10, 2007.
+\item[5.]ANÁLISIS DE DATOS FUNCIONALES. IMPLEMENTACIÓN Y APLICACIONES. Valentín Navarro Pérez. Licenciatura en Ciencias y Técnicas Estadísticas.  Universitat Politécnica de Catalunya. Julio 2004.
+
+
+\end{itemize}
+
+
 % //// --------------------------------------------------------------------------------
 % -------------------------------------------------------------------------------------
 % Fin del cuerpo del documento
